@@ -2,6 +2,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class ConferenceRoomTest {
     ConferenceRoom conferenceRoom;
@@ -24,6 +25,14 @@ public class ConferenceRoomTest {
     @Test
     public void shouldHaveGuests() {
         conferenceRoom.addGuest(guest);
+        assertEquals(1, conferenceRoom.guestCount());
+    }
+    @Test
+    public void shouldRemoveGuest() {
+        conferenceRoom.addGuest(guest);
+        conferenceRoom.addGuest(guest);
+        Guest testGuest = conferenceRoom.removeGuest();
+        assertNotNull(testGuest);
         assertEquals(1, conferenceRoom.guestCount());
     }
 }
